@@ -12,14 +12,15 @@ router.get('/', ctx => {
 });
 
 router.get('/start', ctx => {
-  //Using singleton
+  // jobMap.job1.start();
   Jobs.job.start();
   ctx.body = Jobs.job.running;
 });
 
 router.get('/pause', ctx => {
-  jobMap.job1.stop();
-  ctx.body = jobMap.job1.running;
+  // jobMap.job1.stop();
+  Jobs.job.start();
+  ctx.body = Jobs.job.running;
 });
 
 app
