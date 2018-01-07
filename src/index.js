@@ -3,6 +3,7 @@ import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
 import jobMap from './jobs';
 import jobs from './context';
+import pause from './pause';
 
 const app = new Koa();
 const router = new Router();
@@ -12,15 +13,16 @@ router.get('/', ctx => {
 });
 
 router.get('/start', ctx => {
-  // jobMap.job1.start();
-  Jobs.job.start();
-  ctx.body = Jobs.job.running;
+  jobMap.job1.start();
+  // Jobs.job.start();
+  ctx.body = jobMap.job1.running;
 });
 
 router.get('/pause', ctx => {
   // jobMap.job1.stop();
-  Jobs.job.start();
-  ctx.body = Jobs.job.running;
+  // Jobs.job.stop();
+  pause();
+  ctx.body = jobMap.job1.running;
 });
 
 app
